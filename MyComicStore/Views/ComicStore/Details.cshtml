@@ -1,0 +1,104 @@
+﻿@model MyComicStore.Models.Comics
+
+<link href="~/RateYo/v2.3.2/jquery.rateyo.min.css" rel="stylesheet" />
+
+<style>
+    *:focus {
+        outline: none;
+    }
+
+    .addtoCart {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: inherit;
+        color: #464646;
+        border-radius:5px;
+        text-align: center;
+        font-size: large;
+        font-family: 'Century Gothic';
+        font-weight: bold;
+
+        transition: background .5s ease-in, color .5s .25s ease-out;
+    }
+
+    .addtoCart:hover{
+        background: #464646;
+        color: #f5f5f5;
+        /*transform: scale(1.1)*/
+    }
+</style>
+
+<div class="maindiv" style="position: relative; width: 100%; height: 100%; background-color: inherit; top:0; left:0" data-comicid="@Model.ComicId" data-totalratings="@Model.TotalRatings">
+    <div style="background-image: url('@Model.ImgUrl'); background-position:center; background-size:cover; background-repeat:no-repeat; position: relative; width: 50%; height: 100%; vertical-align: top; display: inline-block">
+        @*<img alt="@Model.Title" src="@Model.ImgUrl" />*@
+    </div><!--
+ --><div style="background-color:#ffffff;position:relative; width:50%; height:100%; vertical-align:top; display:inline-block">
+        <div style="position:relative; width:100%; height:5%"></div>
+        <div style="position:relative; width:100%; height:70%;padding:10px">
+            <div style="position:relative; width:100%; height:10%">
+                <div style="border:2px solid #464646; position:relative; width:40%; height:80%; border-radius:5px; top:50%; left:50%; transform:translate(-50%, -50%); overflow:hidden">
+                    <div id="details" style="background-color:#464646; color:#ffffff; position:relative; width:50%; height:100%; font-size:small; text-align:center; font-family:'Century Gothic'; cursor:pointer; display:inline-block; vertical-align:top">
+                        <div style="position:relative; top:50%; left:50%; transform:translate(-50%,-50%)"><span>DETAILS</span></div>
+                        
+                    </div><!--
+                 --><div id="reviews" style="position:relative; width:50%; height:100%; font-size:small; text-align:center; font-family:'Century Gothic'; cursor:pointer; display:inline-block; vertical-align:top">
+                        <div style="position:relative; top:50%; left:50%; transform:translate(-50%,-50%)"><span>REVIEWS</span></div>
+                    </div>
+                </div>
+            </div>
+            <div style="position:relative; width:100%; height:20%">
+                <div style="position:relative; width:100%; height:50%; font-size:x-large; font-family:'Century Gothic'; font-weight:bold">
+                    <span class="comicTitle">@Model.Title</span><span class="comicId" style="display:none">@Model.ComicId</span>
+                </div>
+                <div style="position:relative; width:100%; height:30%; font-size:medium; font-family:'Century Gothic'">
+                    <div>@ViewBag.categoryName</div>
+                </div>
+                <div style="position:relative; width:100%; height:20%; overflow:hidden">
+                    <div class="stars"></div><span class="comicPrice" style="display:none">@Model.Price</span>
+                </div>
+            </div>
+            <div style="position:relative; width:100%; height:70%; overflow:hidden; overflow-y:auto">
+                <div class="description" id="id_description" style="position:relative; width:100%; height:auto; padding:5px; white-space:normal">
+                    <span>@Model.Description</span>
+                </div>
+                <div class="modelreview" id="id_review" style="position:relative; display:none; width:100%; height:100%; overflow:hidden; overflow-y:auto">
+                    @*@{Html.RenderAction("Reviews", "ComicStore");}*@
+                </div>
+            </div>
+        </div>
+        <div style="position:relative; width:100%; height:25%">
+            <div style="position:relative; width:100%; height:50%; padding:10px">
+                <div style="position:relative; width:100%; height:100%; top:50%; left:50%; transform:translate(-50%, -50%); border-radius:5px; border:2px solid #464646;overflow:hidden">
+                    <div style="background-color:#464646; position:relative; width:15%; height:100%; display:inline-block; vertical-align:top">
+                        <button id="btnminus" type="button" value="" style="position:relative; width:100%; height:100%; background-color:inherit; color:#ffffff; border:none">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </div><!--
+                --><div style="position:relative; width:70%; height:100%; display:inline-block; vertical-align:top;">
+                        @Html.TextBox("Quantity", "1", new { @class = "form-control", style = "font-size: x-large; font-family:'Century Gothic'; text-align: center; height: 100%; border-radius: 0;" })
+                    </div><!--
+                 --><div style="background-color:#464646; position:relative; width:15%; height:100%; display:inline-block; vertical-align:top">
+                        <button id="btnplus" type="button" value="" style="position:relative; width:100%; height:100%; background-color:inherit; color:#ffffff; border:none">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div style="position:relative; width:100%; height:50%; padding:10px">
+                <div style="position:relative; width:100%; height:100%; top:50%; left:50%; transform:translate(-50%, -50%); border-radius:5px; border:2px solid #464646">
+                    <button class="addtoCart" id="btnCart"  type="button" value="" style="">
+                        <span>ADD TO CART</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*@Html.TextBox("Quantity", "1", new { @class = "form-control", style = "text-align: center" })*@
+    @*<h2>@Model.Title</h2>*@
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+<script src="~/RateYo/v2.3.2/jquery.rateyo.min.js"></script>
+@Scripts.Render("~/bundles/Details/js")

@@ -1,0 +1,577 @@
+﻿@model IEnumerable<MyComicStore.Models.Countries>
+
+<style>
+    *:focus {
+        outline: none;
+    }
+</style>
+
+<div style="background-color:#ffffff; position:fixed; width:100%; height:100%; top:0; left:0; padding:15px">
+    <div style="position:relative; width:100%; height:15%">
+        <div style="position:relative; width:90%; height:100%; display:inline-block; vertical-align:top">
+            <div style="position:relative; width:100%; height:auto; top:50%; left:50%; transform:translate(-50%, -50%)">
+                <span id="message" style="font-size:large; font-family:'Century Gothic'; font-weight:bold">Checkout</span>
+            </div>
+        </div><!--
+     --><div style="position:relative; width:10%; height:100%; display:inline-block; vertical-align:top">
+            <div id="checkcancel" style="position:relative; width:50%; height:auto; top:0%; left:50%; text-align:right; cursor:pointer">
+                <span class="glyphicon glyphicon-remove" style="font-size:large"></span>
+            </div>
+        </div>
+    </div>
+    <div style="position:relative; width:100%; height:60%">
+        <div style="position:relative; width:100%; height:10%">
+            @Html.TextBox("Name", "", new { @class = "", style = "position:relative; width:100%; height:100%; border-radius:0; border:0; border-bottom: 1px solid #CCCCCC", placeholder = "NAME" })
+            @*<input id="txtName" type="text" style ="position:relative; width:100%; height:100%; border:0; border-bottom: 1px solid #CCCCCC", placeholder = "NAME" />*@
+        </div>
+        <div style="position:relative; width:100%; height:10%">
+            @Html.TextBox("Email", "", new { @class = "", style = "position:relative; width:100%; height:100%; border-radius:0; border:0; border-bottom: 1px solid #CCCCCC", placeholder = "EMAIL", textMode = "Email" })
+        </div>
+        <div style="position:relative; width:100%; height:10%">
+            @Html.TextBox("Contact", "", new { @class = "", style = "position:relative; width:100%; height:100%; border-radius:0; border:0; border-bottom: 1px solid #CCCCCC", placeholder = "CONTACT NUMBER" })
+        </div>
+        <div style="position:relative; width:100%; height:10%">
+            @Html.TextBox("Birthday", "", new { @class = "", style = "position:relative; width:100%; height:100%; border-radius:0; border:0; border-bottom: 1px solid #CCCCCC", placeholder = "BIRTH DATE (OPTIONAL)" })
+        </div>
+        <div style="position:relative; width:100%; height:10%">
+            <select class="" id="country" name="countryList" style="position:relative; width:100%; height:100%; color:#757575; font-size:small; border:0; border-bottom: 1px solid #CCCCCC">
+                <option class="listname" data-listId="">SELECT YOUR COUNTRY</option>
+                @foreach (var c in Model)
+                {
+                    <option class="countryName" data-listId="@c.CountryId">@c.CountryName</option>
+                }
+            </select>
+        </div>
+        <div style="position:relative; width:100%; height:10%">
+            <select class="" id="provinceId" name="" style="position:relative; width:100%; height:100%; color:#757575; font-size:small; border:0; border-bottom: 1px solid #CCCCCC">
+                <option class="listProvince" data-listId="">PROVINCE</option>
+            </select>
+        </div>
+        <div style="position:relative; width:100%; height:10%">
+            <select class="" id="city" name="" style="position:relative; width:100%; height:100%; color:#757575; font-size:small; border:0; border-bottom: 1px solid #CCCCCC">
+                <option class="listCity" data-provId="">CITY</option>
+            </select>
+        </div>
+        <div style="position:relative; width:100%; height:10%">
+            @Html.TextBox("Address", "", new { @class = "", style = "position:relative; width:100%; height:100%; border-radius:0; border:0; border-bottom: 1px solid #CCCCCC", placeholder = "DETAILED ADDRESS" })
+        </div>
+        <div style="position:relative; width:100%; height:20%">
+            <div style="position:relative; width:250px; height:auto; top:50%; left:50%; transform:translate(-50%, -50%)">
+                <span>By continuing you agree to our <a href="#">Terms of Service</a></span>
+            </div>
+        </div>
+    </div>
+    <div style="position:relative; width:100%; height:25%">
+        <div style="position:relative; width:100%; height:35%">
+            <div style="position:relative; width:100%; height:100%;padding:5px">
+                <button id="signup" type="submit" value="" data-btnId="signup" style="position:relative; width:100%; height:100%; border-radius:5px; border:none; background-color:#1b2447; font-family:'Century Gothic'; font-weight:bold; color:#ffffff">CONTINUE & SIGN UP</button>
+            </div>
+        </div>
+        <div style="position:relative; width:100%; height:35%">
+            <div style="position:relative; width:100%; height:100%;padding:5px">
+                <button id="withoutsignup" type="submit" value="" style="position:relative; width:100%; height:100%; border-radius:5px; border:3px solid #1b2447; background-color:#ffffff; font-family:'Century Gothic'; font-weight:bold; color:#1b2447">CONTINUE WITHOUT SIGNING UP</button>
+            </div>
+        </div>
+        <div style="position:relative; width:100%; height:30%">
+            <div style="position:relative; width:170px; height:auto; top:50%; left:50%; transform:translate(-50%, -50%)">
+                <span>Already have an account? <a href="#">Login</a></span>
+            </div>
+        </div>
+    </div>
+
+    @*cont&sign*@
+    <div id="modalsignup" style="background-color:rgba(0,0,0,0.5); position:absolute; width:100%; height:100%; top:0; left:0; opacity:0; display:none; overflow:hidden">
+
+        <div id="tydiv" style="background-color:#FFFFFF; position:relative;width:100%; height:100%; top:-100%">
+            <span id="spanId" style="display:none"></span>
+            <div style="position:relative; width:100%; height:85%">
+                <div style="position:relative; width:100%; height:60%; top:50%; left:50%; transform:translate(-50%, -50%)">
+                    <div style="position:relative; width:100%; height:30%">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true" style="position:relative; width:auto; height:auto; font-size:50px; color:#155318; top:50%; left:50%; transform:translate(-50%, -50%)"></span>
+                    </div>
+                    <div style="position:relative; width:100%; height:50%">
+                        <div style="position:relative; width:100%; height:50%; text-align:center">
+                            <span style="position:relative; top:60%; font-family:'Century Gothic'; font-size:x-large; font-weight:bold">Thank you</span>
+                        </div>
+                        <div style="position:relative; width:100%; height:50%; text-align:center">
+                            <span style="position:relative; top:0; font-family:'Century Gothic'; font-size:x-large; font-weight:bold">for your purchase</span>
+                        </div>
+                    </div>
+                    <div style="position:relative; width:100%; height:20%">
+                        <div style="position:relative; width:100%; height:50%; text-align:center">
+                            <span style="position:relative; top:50%; font-family:'Century Gothic'; font-size:medium; font-weight:bold">Your order will be delivered on</span>
+                        </div>
+                        <div style="position:relative; width:100%; height:50%; text-align:center">
+                            <span id="delivdate" style="position:relative; top:0; font-family:'Century Gothic'; font-size:smaller; font-weight:bold">for your purchase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="position:relative; width:100%; height:15%">
+                <div style="position:relative; width:100%; height:100%;padding:20px">
+                    <button id="btnOK" type="submit" value="" style="position:relative; width:100%; height:100%; border-radius:5px; border:none; background-color:#1b2447; font-family:'Century Gothic'; font-weight:bold; color:#ffffff">OK</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="signupdiv" style="background-color:#FFFFFF; position:absolute; width:100%; height:50%; top:100%; left:0; padding:15px">
+            <div style="position:relative; width:100%; height:15%">
+                <div style="position:relative; width:90%; height:100%; display:inline-block; vertical-align:top">
+                    <div id="message2" style="position:relative;width:100%; height:auto; font-size:large; font-family:'Century Gothic'; font-weight:bold; top:50%; left:50%; transform:translate(-50%, -50%)"><span>CONTINUE & SIGN UP</span></div>
+                </div><!--
+             --><div style="position:relative; width:10%; height:100%; display:inline-block; vertical-align:top">
+                    <div id="xsignup" style="background-color:#CCCCCC; position:relative; width:30px; height:30px; border-radius:100%; top:50%; left:50%; transform:translate(-50%, -50%); text-align:center;padding:5px; cursor:pointer">
+                        <span class="glyphicon glyphicon-remove" style="font-size:large; color:#606060"></span>
+                    </div>
+                </div>
+            </div>
+            <div style="position:relative; width:100%; height:50%">
+                <div style="position:relative; width:100%; height:40%">
+                    @Html.TextBox("UserName", "", new { @class = "", style = "position:relative; width:100%; height:100%; border:0; border-radius:0; border-bottom: 2px solid #CCCCCC; text-align:center; font-size:large", placeholder = "EMAIL" })
+                </div>
+                <div style="position:relative; width:100%; height:30%">
+                    @Html.TextBox("Password", "", new { @class = "", style = "position:relative; width:100%; height:100%; border:0; border-radius:0; border-bottom: 2px solid #CCCCCC; text-align:center; font-size:large", placeholder = "PASSWORD", type = "password" })
+                </div>
+                <div style="position:relative; width:100%; height:30%">
+                    @Html.TextBox("VerPass", "", new { @class = "", style = "position:relative; width:100%; height:100%; border:0; border-radius:0; border-bottom: 2px solid #CCCCCC; text-align:center; font-size:large", placeholder = "VERIFY PASSWORD", type = "password" })
+                </div>
+            </div>
+            <div style="position:relative; width:100%; height:35%">
+                <div style="position:relative; width:100%; height:50%">
+                    <div style="position:relative; width:100%; height:auto; top:50%; left:50%; transform:translate(-50%, -50%); text-align:center">
+                        <span>By continuing, you agree to our <a href="#">Terms of Service</a></span>
+                    </div>
+                </div>
+                <div style="position:relative; width:100%; height:50%">
+                    <div style="position:relative; width:100%; height:100%;padding:5px">
+                        <button id="btnsignup" type="submit" value="" style="position:relative; width:100%; height:100%; border-radius:5px; border:none; background-color:#1b2447; font-family:'Century Gothic'; font-weight:bold; color:#ffffff">CONTINUE & SIGN UP</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script>
+    $(document).ready(function () {
+
+        $("#checkcancel").on("click", function () {
+
+            setTimeout(function () {
+                $("#modalcart_2").css('opacity', '0');
+                $("#modalcart_2").css('transition', '0.5s ease-out');
+
+
+                setTimeout(function () {
+                    $('#modalcart_1').css({
+                        'left': '0',
+                        'transition': '0.5s ease-in'
+                    });
+                    $("#modalcart_2").css("display", "none");
+                }, 500, )
+
+
+            }, 200);
+        })
+
+        var fullurl = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/';
+
+        $("#provinceId").prop('disabled', true)
+        $("#provinceId").css("background-color", "#EEEEEE")
+        $("#city").attr("Disabled", "Disabled")
+        $("#city").css("background-color", "#EEEEEE")
+
+        $("#country").on('change', function () {
+
+            $("#provinceId").prop('disabled', false)
+            $("#provinceId").css("background-color", "#FFFFFF")
+
+            var countryId = $('#country :selected').attr('data-listId');
+            
+            $.ajax(
+                {
+                    url: fullurl + 'Cart/SearchProvinces',
+                    data: {
+                        countryid: countryId
+                    },
+                    type: 'GET',
+                    async: false,
+                    contentType: 'application/json; charset=utf-8',
+                    //cache: true,
+                    success: function (data) {
+                        
+                        //alert(JSON.stringify(data));
+
+                        //**jquery loop on Json data using $.each!
+                        $('#provinceId').children().remove();
+                        $.each(data, function (i, item) {
+                            //alert(item.ProvinceName)
+
+                            var myObject = item;
+                            var returnoption = $('<option class="" onclick="" id="'+ myObject.ProvinceId+'" style="position:relative;display:block;background-color:#f5f5f5; border:1px Solid #464646;padding:10px">' + myObject.ProvinceName + '</option>');
+                            $(returnoption).appendTo($('#provinceId'));
+
+                            //for (var i in item) {
+                            //    alert(item[i]) //note i returns index
+                            //}
+
+                        });
+
+                    },
+                    error: function (response) { console.log(response.responseText); },
+                    failure: function (response) { console.log(response.responseText); }
+                });
+
+        });
+
+        $("#provinceId").on('change', function () {
+
+            $("#city").removeAttr('Disabled');
+            $("#city").css("background-color", "#FFFFFF")
+            
+
+            var provinceId = $('#provinceId :selected').attr('id');
+            //alert(provinceId)
+            $.ajax(
+                {
+                    url: fullurl + 'Cart/SearchCities',
+                    data: {
+                        provinceid: provinceId
+                    },
+                    type: 'GET',
+                    async: false,
+                    contentType: 'application/json; charset=utf-8',
+                    //cache: true,
+                    success: function (data) {
+
+                        $('#city').children().remove();
+
+                        //**loop through array in jQuery!
+                        for (var i = 0; i < data.length; i++) {
+                            var returncity = $('<option class="city" id="' + data[i].CityId + '" onclick="" style="position:relative;display:block;background-color:#f5f5f5; border:1px Solid #464646;padding:10px">' + data[i].CityName + '</option>');
+                            $(returncity).appendTo($('#city'));
+                        }
+                    },
+                    error: function (response) { console.log(response.responseText); },
+                    failure: function (response) { console.log(response.responseText); }
+                });
+
+        });
+
+        $("#withoutsignup").on("click", function () {
+
+            if ($("#Name").val() !== "" &&
+                $("#Email").val() !== "" &&
+                $("#Contact").val() !== "" &&
+                $("#country").val() !== "SELECT YOUR COUNTRY" && $("#country").val() !== "" &&
+                $("#provinceId").val() !== "PROVINCE" && $("#provinceId").val() !== "" &&
+                $("#city").val() !== "CITY" && $("#city").val() !== "" &&
+                $("#Address").val() !== "") {
+                
+                var Name = $("#Name").val();
+                var Contact = $("#Contact").val();
+                var Bday = $("#Birthday").val();
+                var Country = $('#country :selected').attr('data-listId');
+                var Province = $('#provinceId :selected').attr('id');
+                var City = $('#city :selected').attr('id');
+                var Address = $("#Address").val();
+                var Email = $("#Email").val();
+                //alert(City);
+                
+                var obj = $("#selectedComics").find(".itemtray");
+                var comicarray = [];
+
+                for (var i = 0; i < obj.length; i++) {
+                    //console.log(obj[i]);
+                    var comicId = $(obj[i]).attr("data-comicid") + "!" + $(obj[i]).find(".quantity").text();
+                    comicarray.push(comicId);
+                }
+                //console.log(comicarray)
+
+                $.ajax(
+                    {
+                        url: fullurl + 'Cart/WithoutSignUp',
+                        data: {
+                            name: Name,
+                            contact: Contact,
+                            bday: Bday,
+                            country: Country,
+                            province: Province,
+                            city: City,
+                            address: Address,
+                            email: Email,
+                            comicdetails: comicarray
+                        },
+                        type: 'POST',
+                        async: false,
+                        //cache: true,
+                        success: function (data) {
+
+                            errorMessage = 'Please fill in the required fields';
+                            if (data == errorMessage) {
+                                $('#message').text(errorMessage);
+                                $('#message').css("color", "#ff0000");
+                            }
+                            else {
+
+                                $("#Name").val("");
+                                $("#Email").val("");
+                                $("#Contact").val("");
+                                $("#country").val("SELECT YOUR COUNTRY");
+
+                                $("#provinceId").children().remove();
+                                var probinsya = $('<option>' + 'PROVINCE' + '</option>');
+                                $(probinsya).appendTo($('#provinceId'));
+
+                                $("#city").children().remove();
+                                var siti = $('<option>' + 'CITY' + '</option>');
+                                $(siti).appendTo($('#city'));
+
+                                $("#Address").val("");
+
+                                $("#provinceId").prop('disabled', true)
+                                $("#provinceId").css("background-color", "#EEEEEE")
+                                $("#city").attr("Disabled", "Disabled")
+                                $("#city").css("background-color", "#EEEEEE")
+
+                                //GET TODAY DATE + 7 DAYS!
+                                var today_date = new Date()
+                                today_date.setDate(today_date.getDate() + 7)
+                                //alert(today_date)
+                                $("#delivdate").text(today_date);
+
+                                setTimeout(function () {
+
+                                    $("#modalsignup").css("display", "block");
+                                    $('#modalsignup').css({ 'opacity': '1', 'transition': '0.5s ease-in' });
+
+                                    setTimeout(function () {
+
+                                        $('#tydiv').css({
+                                            'top': '0',
+                                            'transition': '0.5s ease-in'
+                                        });
+
+                                    }, 500, )
+
+
+                                }, 200);
+                            }
+
+                        },
+                        error: function (response) { console.log(response.responseText); },
+                        failure: function (response) { console.log(response.responseText); }
+                    });
+
+            } else {
+                $('#message').text("Please fill in the required fields:");
+                $('#message').css("color", "#ff0000")
+            }
+
+            
+        })
+
+        $("#UserName").prop('disabled', true)
+
+        $("#signup").on("click", function () {
+
+            if ($("#Name").val() !== "" &&
+                $("#Email").val() !== "" &&
+                $("#Contact").val() !== "" &&
+                $("#country").val() !== "SELECT YOUR COUNTRY" && $("#country").val() !== "" &&
+                $("#provinceId").val() !== "PROVINCE" && $("#provinceId").val() !== "" &&
+                $("#city").val() !== "CITY" && $("#city").val() !== "" &&
+                $("#Address").val() !== "") {
+
+                $('#message').text("Checkout");
+                $('#message').css({ "color": "#000000", "font - size": "large", "font - family": "'Century Gothic'", "font - weight": "bold"})
+                
+                var userName = $("#Email").val();
+                $("#UserName").val(userName);
+
+                $("#modalsignup").css("display", "block");
+                setTimeout(function () {
+                    $('#modalsignup').css({
+                        'opacity': '1',
+                        'transition': '0.5s ease-in'
+                    });
+
+                    setTimeout(function () {
+                        $("#signupdiv").css('top', '50%');
+                        $("#signupdiv").css('transition', '0.5s ease-in');
+
+                    }, 500);
+
+                }, 200, )
+
+            }else {
+                $('#message').text("Please fill in the required fields:");
+                $('#message').css("color", "#ff0000")
+            }
+
+            
+
+        })
+        
+        $("#xsignup").on("click", function () {
+            
+            setTimeout(function () {
+
+                $("#signupdiv").css('top', '100%');
+                $("#signupdiv").css('transition', '0.5s ease-out');
+                
+                setTimeout(function () {
+
+                    $('#modalsignup').css({
+                        'opacity': '0',
+                        'transition': '0.5s ease-out'
+                    });
+                    $("#modalsignup").css("display", "none");
+
+                }, 500, )
+
+
+            }, 200);
+
+        })
+        
+        //PASSWORD BUTTON
+        $("#btnsignup").on("click", function () {
+            
+            if ($("#Password").val() !== "") {
+
+                if ($("#VerPass").val() !== "") {
+
+                    var pass = $('#Password').val();
+                    var pass2 = $('#VerPass').val();
+                    if (pass !== pass2) {
+                        $('#message2').text('Password didn\'t match!');
+                        $('#message2').css("color", "#ff0000");
+                    }
+                    else
+                    {
+
+                        var Name = $("#Name").val();
+                        var Contact = $("#Contact").val();
+                        var Bday = $("#Birthday").val();
+                        var Country = $('#country :selected').attr('data-listId');
+                        var Province = $('#provinceId :selected').attr('id');
+                        var City = $('#city :selected').attr('id');
+                        var Address = $("#Address").val();
+                        var Email = $("#Email").val();
+                        var Password = $("#Password").val();
+                        var Verpass = $("#VerPass").val();
+                        //alert(Password);
+
+                        var obj = $("#selectedComics").find(".itemtray");
+                        var comicarray = [];
+
+                        for (var i = 0; i < obj.length; i++) {
+                            //console.log(obj[i]);
+                            var comicId = $(obj[i]).attr("data-comicid") + "!" + $(obj[i]).find(".quantity").text();
+                            comicarray.push(comicId);
+                        }
+                        //console.log(comicarray)
+
+                        $.ajax(
+                            {
+                                url: fullurl + 'Cart/WithSignUp',
+                                data: {
+                                    name: Name,
+                                    contact: Contact,
+                                    bday: Bday,
+                                    country: Country,
+                                    province: Province,
+                                    city: City,
+                                    address: Address,
+                                    email: Email,
+                                    password: Password,
+                                    verpass: Verpass,
+                                    comicdetails: comicarray
+                                },
+                                type: 'POST',
+                                async: false,
+                                //cache: true,
+                                success: function (data) {
+
+                                    //errorMessage = 'ERROR';
+                                    if (data === "ERROR: This Email already exists") {
+                                        $('#message2').text("This Email already exists");
+                                        $('#message2').css("color", "#ff0000");
+                                    }
+                                    else {
+
+                                        //GET TODAY DATE + 7 DAYS!
+                                        var today_date = new Date()
+                                        today_date.setDate(today_date.getDate() + 7)
+                                        //alert(today_date)
+                                        $("#delivdate").text(today_date);
+
+                                        setTimeout(function () {
+
+                                            $("#signupdiv").css('top', '100%');
+                                            $("#signupdiv").css('transition', '0.5s ease-out');
+
+                                            setTimeout(function () {
+
+                                                $('#tydiv').css({
+                                                    'top': '0',
+                                                    'transition': '0.5s ease-in'
+                                                });
+
+
+                                            }, 500, )
+
+
+                                        }, 200);
+                                    }
+
+                                },
+                                error: function (response) { console.log(response.responseText); },
+                                failure: function (response) { console.log(response.responseText); }
+                            });
+
+                    };
+
+                } else {
+                    $('#message2').text("Verify your Password!");
+                    $('#message2').css("color", "#ff0000")
+                };
+
+
+            } else {
+                $('#message2').text("Password is Required!");
+                $('#message2').css("color", "#ff0000")
+            };
+
+        });
+
+        //TY BUTTON
+        $("#btnOK").on("click", function () {
+
+            setTimeout(function () {
+                $('#tydiv').css({ 'top': '100%', 'transition': '0.5s ease-out' });
+                $('#modalsignup').css({ 'opacity': '0', 'transition': '0.5s ease-out' });
+                $("#modalsignup").css("display", "none");
+                $("#modalcart_2").css('opacity', '0');
+                $("#modalcart_2").css('transition', '0.5s ease-out');
+                $('#selectedComics').children().remove();
+                $("#redAlert").css("display", "none");
+
+                setTimeout(function () {
+                    $('#modalcart').css({
+                        'opacity': '0',
+                        'transition': '0.5s ease-out'
+                    });
+                    $("#modalcart").css("display", "none");
+                }, 500, )
+            }, 200);           
+
+        })
+
+    });
+</script>

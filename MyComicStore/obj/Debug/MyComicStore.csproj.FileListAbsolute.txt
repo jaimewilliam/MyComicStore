@@ -1,0 +1,198 @@
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\ApplicationInsights.config
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\MyComicStore.dll.config
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\MyComicStore.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\MyComicStore.pdb
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\csc.exe
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\csc.exe.config
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\csc.rsp
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\csi.exe
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\csi.exe.config
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\csi.rsp
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.AppContext.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Console.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.IO.Compression.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.IO.Pipes.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Security.Claims.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.ValueTuple.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Xml.XPath.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\vbc.exe
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\vbc.exe.config
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\vbc.rsp
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\VBCSCompiler.exe
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Antlr3.Runtime.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\EntityFramework.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.AI.Web.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.ApplicationInsights.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Newtonsoft.Json.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.Helpers.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.Mvc.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.Optimization.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.Razor.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.WebPages.Deployment.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.WebPages.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.WebPages.Razor.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\WebGrease.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\EntityFramework.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\EntityFramework.SqlServer.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.Helpers.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.Mvc.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.Optimization.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.Razor.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.WebPages.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.WebPages.Deployment.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Web.WebPages.Razor.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Newtonsoft.Json.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Antlr3.Runtime.pdb
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.AI.Web.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\obj\Debug\MyComicStore.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\obj\Debug\MyComicStore.Migrations.InitialCreate.resources
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\obj\Debug\MyComicStore.Migrations.Logo.resources
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\obj\Debug\MyComicStore.Migrations.DropList.resources
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\obj\Debug\MyComicStore.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\obj\Debug\MyComicStore.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\obj\Debug\MyComicStore.csproj.CopyComplete
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\obj\Debug\MyComicStore.dll
+C:\Users\admin\Desktop\JWilliam\MVC - Practice\MyComicStore\MyComicStore\obj\Debug\MyComicStore.pdb
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\ApplicationInsights.config
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\MyComicStore.dll.config
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\MyComicStore.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\MyComicStore.pdb
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\csc.exe
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\csc.exe.config
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\csc.rsp
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\csi.exe
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\csi.exe.config
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\csi.rsp
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.AppContext.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Console.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.IO.Compression.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Security.Claims.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.ValueTuple.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\vbc.exe
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\vbc.exe.config
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\vbc.rsp
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\VBCSCompiler.exe
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Antlr3.Runtime.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\EntityFramework.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\EntityFramework.SqlServer.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.AI.Web.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Newtonsoft.Json.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.Helpers.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.Mvc.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.Optimization.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.Razor.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.WebPages.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.WebPages.Razor.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\WebGrease.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\EntityFramework.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\EntityFramework.SqlServer.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.Helpers.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.Mvc.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.Optimization.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.Razor.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.WebPages.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Web.WebPages.Razor.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Newtonsoft.Json.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Antlr3.Runtime.pdb
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.AI.Web.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\obj\Debug\MyComicStore.Migrations.InitialCreate.resources
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\obj\Debug\MyComicStore.Migrations.Logo.resources
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\obj\Debug\MyComicStore.Migrations.DropList.resources
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\obj\Debug\MyComicStore.csproj.GenerateResource.cache
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\obj\Debug\MyComicStore.csproj.CoreCompileInputs.cache
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\obj\Debug\MyComicStore.csproj.CopyComplete
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\obj\Debug\MyComicStore.dll
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\obj\Debug\MyComicStore.pdb
+C:\Users\Blandino Alzaga\Desktop\Jaime\MyComicStore\MyComicStore\obj\Debug\MyComicStore.csprojResolveAssemblyReference.cache

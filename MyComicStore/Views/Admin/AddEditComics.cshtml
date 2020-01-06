@@ -1,0 +1,218 @@
+﻿@model MyComicStore.Models.Comics
+
+@{ 
+    string imgUrl = "";
+    string price = "";
+    string title = "";
+    string category = "Select Category";
+    string description = "";
+    int comicid = 0;
+}
+
+<div style="position:relative; width:100%; height:100%">
+
+    @{
+        if(Model != null)
+        {
+            imgUrl = Model.ImgUrl;
+            price = Model.Price.ToString();
+            title = Model.Title;
+            category = Model.CategoryId.ToString();
+            description = Model.Description;
+            comicid = Model.ComicId;
+        }
+    }
+
+    <div id="imgPreview" data-comicid="@comicid" style="background-image: url('@imgUrl'); background-position:center; background-repeat:no-repeat;background-size:contain; background-color: #EEEEEE; position: relative; width: 50%; height: 100%; display: inline-block; vertical-align: top">
+        <div style="position:relative; width:20%; height:20%; top:50%; left:50%; transform:translate(-50%, -50%)">
+
+            <input id="inp" type='file' style="display:none">
+            <p id="b64" style="display:none"></p>
+
+            <div id="addimage" style="position:relative; width:100%; height:80%; display:flex; align-items:center; justify-content:center; cursor:pointer">
+            <span class="fa fa-plus" style="font-size:50px; color:#343434"></span>
+        </div>
+        <div style="position:relative; width:100%; height:20%; display:flex; align-items:center; justify-content:center; color:#428bca">
+            <span id="spntxt">Add Cover</span>
+        </div>
+        </div>
+    </div><!--
+ --><div style="background-color:#FFFFFF; position:relative; width:50%; height:100%; display:inline-block; vertical-align:top">
+        <div style="position:relative; width:100%; height:85%">
+            <div style="position:relative; width:100%; height:80%; top:50%; left:50%; transform:translate(-50%, -50%); padding:5px">
+                <div style="position:relative; width:100%; height:10%; margin-bottom:10px">
+                    <input id="txtprice" type="text" placeholder="Price" style="position:relative; width:100%; height:100%; font-size:large; border:none; border-bottom:2px solid #343434" value="@price" />
+                </div>
+                <div style="position:relative; width:100%; height:10%; margin-bottom:10px">
+                    <input id="txttitle" type="text" placeholder="Title" style="position:relative; width:100%; height:100%; font-size:large; border:none; border-bottom:2px solid #343434" value="@title"/>
+                </div>
+                <div style="position:relative; width:100%; height:10%; margin-bottom:10px">
+                    <span class="categoryidholder" style="display:none">@category</span>
+                    @{Html.RenderAction("SelectCategory", "Admin");}
+                </div>
+                <div style="position:relative; width:100%; height:30%; margin-bottom:10px">
+                    <textarea id="txtdescript" type="text" placeholder="Description" style="position:relative; width:100%; height:100%; resize:none; font-size:large; border:none; border-bottom:2px solid #343434" value="">@description</textarea>
+                </div>
+                <div style="position:relative; width:100%; height:10%; margin-bottom:10px; text-align:center; font-size:large"><span id="message"></span></div>
+            </div>
+        </div>
+        <div style="position:relative; width:100%; height:15%">
+            <div style="position:relative; width:60%; height:100%; float:right">
+                <div style="position:relative; width:50%; height:100%; display:inline-block; vertical-align:top">
+                    <button id="btncanceladd" style="position:relative; width:80%; height:50%; border-radius:5px; border:2px solid #343434; top:50%; left:50%; transform:translate(-50%, -50%)">Cancel</button>
+                </div><!--
+             --><div style="position:relative; width:50%; height:100%; display:inline-block; vertical-align:top">
+                    <button id="btnsavecomic" style="position:relative; width:80%; height:50%; border-radius:5px; border:2px solid #343434; top:50%; left:50%; transform:translate(-50%, -50%)">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    var fullurl = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/';
+
+    $(document).ready(function () {
+
+        $("#addimage").on("click",function () {
+            $("#inp").click();
+        });
+
+        $("#btncanceladd").on("click", function () {
+            setTimeout(function () {
+                $('.modalbatch_1').css({
+                    'opacity': '0',
+                    'transition': '0.5s ease-out'
+                });
+
+                setTimeout(function () {
+                    $(".modalbatch").css('opacity', '0');
+                    $(".modalbatch").css('transition', '0.5s ease-out');
+
+                    $('.modalbatch').css("display", "none", );
+
+                }, 500);
+
+            }, 200, )
+        });
+
+        $("#btnsavecomic").on("click", function () {
+
+            var base = $("#b64").html().split("data:image/jpeg;base64,").join("");
+            var price = $("#txtprice").val();
+            var title = $("#txttitle").val();
+            var categ = $("#txtcateg :selected").attr('value')
+            var descript = $("#txtdescript").val();
+            var comicid = $("#imgPreview").attr("data-comicid");
+            
+            $.ajax(
+                {
+                    url: fullurl + 'Admin/SaveComic',
+                    data: {
+                        Base: base,
+                        Price: price,
+                        Title: title,
+                        Categ: categ,
+                        Descript: descript,
+                        comicId: comicid
+                    },
+                    type: 'POST',
+                    async: false,
+                    //contentType: 'application/json; charset=utf-8',
+                    cache: true,
+                    success: function (data) {
+                        //console.log(data);
+                        if (data === "Please fill in the required fields") {
+                            $('#message').text("Please fill in the required fields!");
+                            $('#message').css("color", "#d9534f");
+                        } else {
+
+                            setTimeout(function () {
+                                $('#message').text("Successfully Saved!");
+                                $('#message').css("color", "#5cb85c");
+
+                                if (data === "Updated!") {
+                                    $('#message').text("Successfully Updated!");
+                                    $('#message').css("color", "#5cb85c");
+                                    
+                                    //hanapin yung div - uodate images
+                                    if ($("#b64").html() != null) {
+                                        
+                                        var updateimg = $('#imgPreview').css('background-image');
+                                        $("#imgcontainer").find('#' + comicid).css('background-image', updateimg);
+                                        
+                                    } else {}
+                                    
+                                } else {
+                                    var id = data;
+                                    var getimg = $('#imgPreview').css('background-image');
+                                    var dynamicCover = $('<div style="position: relative; width:170px; height:250px;display:inline-block; vertical-align:top;background-color:inherit;margin:5px">' +
+
+                                        '<div class="imgdiv" onclick="" style="position:relative; width:100%; height:100%; overflow:hidden" data-comicid="' + id + '">' +
+                                        '<div class="imgdiv1" style="position: relative; background-size:contain; background-position: center; background-repeat:no-repeat; width:100%; height:100%;display:inline-block; vertical-align:top; background-color:#000000">' +
+                                        '<div class="details" style="background-color:rgba(0,0,0,0.5);position:relative; width:100%; height:100%; z-index:1">' +
+                                        '<div style="position:relative; width:40%; height:60%; top:50%; left:50%; transform:translate(-50%, -50%)">' +
+                                        '<div style="position:relative; width:100%; height:50%">' +
+                                        '<div style="background-color:#ffffff; position:relative; width:50px; height:50px; border-radius:100px; display:flex; align-items:center; justify-content:center; cursor:pointer; top:50%; left:50%; transform:translate(-50%, -50%)">' +
+                                        '<span class="fa fa-edit" style="position:relative; font-size:x-large">' + '</span>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '<div style="position:relative; width:100%; height:50%">' +
+                                        '<div style="background-color:#ffffff; position:relative; width:50px; height:50px; border-radius:100px; display:flex; align-items:center; justify-content:center; cursor:pointer; top:50%; left:50%; transform:translate(-50%, -50%)">' +
+                                        '<span class="fa fa-trash-o" style="position:relative; font-size:x-large">' + '</span>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+
+                                        '</div>');
+                                    $(dynamicCover).find('.imgdiv1').css('background-image', getimg);
+                                    $("#imgcontainer").append($(dynamicCover));
+                                }
+                                
+
+                                setTimeout(function () {
+                                    $('#imgPreview').css('background-image', 'url(' + + ')');
+
+                                    $("#txtprice").val("");
+                                    $("#txttitle").val("");
+                                    $("#txtdescript").val("");
+                                    $("#txtcateg").val("Select Category");
+                                }, 500);
+
+                            }, 200, )
+                        }
+                    },
+                    error: function (response) { console.log(response.responseText); },
+                    failure: function (response) { console.log(response.responseText); }
+                });
+
+        });
+
+    });
+
+    document.getElementById("inp").addEventListener("change", readFile);
+    function readFile() {
+
+        if (this.files && this.files[0]) {
+
+            var FR = new FileReader();
+
+            FR.addEventListener("load", function (e) {
+                //document.getElementById("img").src = e.target.result;
+                $('#imgPreview').css('background-image', 'url(' + e.target.result + ')');
+                document.getElementById("b64").innerHTML = e.target.result;
+                $("#spntxt").text("Edit Photo");
+            });
+
+            FR.readAsDataURL(this.files[0]);
+        }
+
+    }
+
+</script>

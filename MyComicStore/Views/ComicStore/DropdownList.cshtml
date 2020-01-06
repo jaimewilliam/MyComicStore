@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MyComicStore.Models.DropList>
+
+@{
+    string Cookie = ViewBag.Cookie;
+}
+
+<div style="position:relative; width:100%; height:100%">
+    <div style="position:relative; width:90%; height:100%; display:inline-block; vertical-align:top">
+        <select class="form-control" id="Comiclist" name="Comiclist" style="position:relative; width:auto; height:100%; font-size:small; margin-left:10px">
+            @*<option>Select Gender</option>*@
+            @foreach (var list in Model)
+            {
+                <option class="listname" data-listId="@list.ListId">@list.ListName</option>
+            }
+        </select>
+    </div><!--
+ --><div style="position:relative; width:10%; height:100%; display:inline-block; vertical-align:top; padding:5px">
+        @if (Cookie != null)
+        {
+            <button id="btnLogin_out" type="button" value="" style="background-color:inherit; position:relative; float:right; width:100%; height:100%; margin-right:5px; border-radius:5px; font-weight:bold">LOGOUT</button>
+        }
+        else
+        {
+            <button id="btnLogin_out" type="button" value="" style="background-color:inherit; position:relative; float:right; width:100%; height:100%; margin-right:5px; border-radius:5px; font-weight:bold">LOGIN</button>
+        }
+    </div>
+
+</div>
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/DropdownList/js")
+
+

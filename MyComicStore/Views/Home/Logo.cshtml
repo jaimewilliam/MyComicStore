@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MyComicStore.Models.Logo>
+
+
+
+<div style="position: relative; width: 100%; height: 100%; background-color: #343434; top:0; left:0">
+
+    @foreach (var item in Model)
+    {
+        <div id="logodiv1" style="position:relative; width:100%; height:100%; padding:15px">
+            <div style="position:relative; background-image: url('@item.ImgLogo'); background-size:contain; background-position: center;
+                background-repeat:no-repeat; width:100%; height:80%;display:inline-block; vertical-align:top"></div>
+            <div style="position:relative; width:100%; height:20%; color:#f5f5f5; text-align:center;
+                text-transform:capitalize; font-size:larger; font-family:'Century Gothic';font-weight:bold">@item.AppName</div>
+            </div>
+   }
+
+</div>
+

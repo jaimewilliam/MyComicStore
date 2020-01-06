@@ -1,0 +1,168 @@
+﻿@model IEnumerable<MyComicStore.Models.Comics>
+
+<link href="~/Plugins/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+
+<style>
+    .imgdiv:hover .details {
+        display: block;
+        opacity: 1;
+        transition: opacity 0.5s ease-in;
+        /*transition-property: opacity;
+        transition-delay: 2s;*/
+    }
+
+    .details {
+        display: none;
+        opacity: 0
+    }
+</style>
+
+<div  id="imgcontainer"style="position:relative; background-color:#EEEEEE; width:100%; height:100%;border-radius:10px; padding:10px; overflow-y:auto">
+
+    @foreach (var comic in Model)
+    {
+        <div style="position: relative; width:170px; height:250px;display:inline-block; vertical-align:top;background-color:inherit;margin:5px">
+            
+            <div class="imgdiv" onclick="" style="position:relative; width:100%; height:100%; overflow:hidden" data-comicid="@comic.ComicId">
+                <div class="imgdiv1" id="@comic.ComicId" style="position: relative; background-image: url('@comic.ImgUrl'); background-size:contain; background-position: center; background-repeat:no-repeat; width:100%; height:100%;display:inline-block; vertical-align:top; background-color:#000000">
+                    <div class="details" style="background-color:rgba(0,0,0,0.5);position:relative; width:100%; height:100%; z-index:1">
+                        <div style="position:relative; width:40%; height:60%; top:50%; left:50%; transform:translate(-50%, -50%)">
+                            <div style="position:relative; width:100%; height:50%">
+                                <div onclick="editcomic($(this));" style="background-color:#ffffff; position:relative; width:50px; height:50px; border-radius:100px; display:flex; align-items:center; justify-content:center; cursor:pointer; top:50%; left:50%; transform:translate(-50%, -50%)" data-comicid="@comic.ComicId" data-category="@comic.CategoryId">
+                                    <span class="fa fa-edit" style="position:relative; font-size:x-large"></span>
+                                </div>
+                            </div>
+                            <div style="position:relative; width:100%; height:50%">
+                                <div onclick="deletecomic($(this));" style="background-color:#ffffff; position:relative; width:50px; height:50px; border-radius:100px; display:flex; align-items:center; justify-content:center; cursor:pointer; top:50%; left:50%; transform:translate(-50%, -50%)" data-comicid="@comic.ComicId">
+                                    <span class="fa fa-trash-o" style="position:relative; font-size:x-large"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+    <div style="position:fixed; width:100px; height:100px; top:80%; left:90%; z-index:1">
+        <button onclick="addcom($(this));" style="background-color:#ffffff; position:relative; width:80px; height:80px; border-radius:100%; border:none; top:50%; left:50%; transform:translate(-50%, -50%)">
+            <span class="fa fa-plus" style="font-size:50px; color:#343434"></span>
+        </button>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    function addcom(btncom) {
+
+        var fullurl = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/';
+
+        var comicId = 0;
+        //alert(comicId);
+        $.ajax(
+            {
+                url: fullurl + 'Admin/AddEditComics',
+                data: {
+                    comicid: comicId
+                },
+                type: 'GET',
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                cache: true,
+                success: function (data) {
+                    //console.log(data);
+                    $('.modalbatch').css("display", "block", );
+
+                    setTimeout(function () {
+                        $(".modalbatch").css('opacity', '1');
+                        $(".modalbatch").css('transition', '0.5s ease-in');
+
+                        setTimeout(function () {
+                            $('.modalbatch_1').css({
+                                'opacity': '1',
+                                'transition': '0.5s ease-in'
+                            });
+                        }, 500, )
+
+                    }, 200);
+
+                    $('.modalbatch_1').children().remove();
+                    $('.modalbatch_1').html(data);
+                },
+                error: function (response) { console.log(response.responseText); },
+                failure: function (response) { console.log(response.responseText); }
+            });
+
+    }
+
+    function editcomic(btnedit) {
+        var fullurl = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/';
+
+        var comicId = $(btnedit).attr('data-comicid');
+        
+        $.ajax(
+            {
+                url: fullurl + 'Admin/AddEditComics',
+                data: {
+                    comicid: comicId
+                },
+                type: 'GET',
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                cache: true,
+                success: function (data) {
+                    
+                    $('.modalbatch').css("display", "block", );
+
+                    setTimeout(function () {
+                        $(".modalbatch").css('opacity', '1');
+                        $(".modalbatch").css('transition', '0.5s ease-in');
+
+                        setTimeout(function () {
+                            $('.modalbatch_1').css({
+                                'opacity': '1',
+                                'transition': '0.5s ease-in'
+                            });
+                        }, 500, )
+
+                    }, 200);
+
+                    $('.modalbatch_1').children().remove();
+                    $('.modalbatch_1').html(data);
+                },
+                error: function (response) { console.log(response.responseText); },
+                failure: function (response) { console.log(response.responseText); }
+            });
+        
+    }
+
+    function deletecomic(btndel) {
+        var fullurl = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/';
+
+        var comicId = $(btndel).attr('data-comicid');
+        alert(comicId);
+        $.ajax(
+            {
+                url: fullurl + 'Admin/DeleteComics',
+                data: {
+                    comicid: comicId
+                },
+                type: 'GET',
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                cache: true,
+                success: function (data) {
+                    $("#imgcontainer").find('#' + comicId).remove();
+                    //$("#imgcontainer").load(" #imgcontainer > *");
+                },
+                error: function (response) { console.log(response.responseText); },
+                failure: function (response) { console.log(response.responseText); }
+            });
+    }
+
+</script>
+
+
+

@@ -1,0 +1,89 @@
+﻿@model MyComicStore.Models.MapCoordinates
+
+@{
+    string Cookie = ViewBag.Cookie;
+}
+
+<div style="position:relative; width:100%; height:100%;">
+    <div style="position:relative; width:100%; height:75%">
+        <iframe id="mapid" style="width:100%; height:100%"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"
+                src="https://maps.google.com/maps?q=@Model.Latitude,@Model.Longitude&hl=en&z=14&amp;output=embed"></iframe>
+        <br />
+        <small>
+            <a href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=en;z=14&amp;output=embed"
+               style="color:#0000FF;text-align:left"
+               target="_blank">
+                See map bigger!
+            </a>
+        </small>
+    </div>
+    <div style="background-color:#ffffff; position:relative; width:100%; height:25%">
+        <div style="position:relative; width:85%; height:100%; display:inline-block; vertical-align:top">
+            <div style="position:relative;width:100%; height:20%; display:flex; align-items:center">
+                <span style="font-size:large; font-family:'Century Gothic'; font-weight:bold">Order No. <span id="batchnumber"></span></span>
+            </div>
+            <div style="position:relative;width:100%; height:20%; display:flex; align-items:center">
+                <span id="fullname" style="font-size:larger; font-family:'Century Gothic'; font-weight:bold">Name of Customer</span>
+            </div>
+            <div style="position:relative;width:100%; height:20%; display:flex; align-items:center">
+                <span id="address" style="font-size:small; font-family:'Century Gothic'; font-weight:bold">Full Address</span>
+            </div>
+            <div style="position:relative;width:100%; height:20%; display:flex; align-items:center">
+                <span id="email" style="font-size:small; font-family:'Century Gothic'; font-weight:bold">Email</span>
+            </div>
+            <div style="position:relative;width:100%; height:20%; display:flex; align-items:center">
+                <span id="phone" style="font-size:small; font-family:'Century Gothic'; font-weight:bold">Phone #</span>
+            </div>
+        </div><!--
+     --><div style="position:relative; width:15%; height:100%; display:inline-block; vertical-align:top">
+            @if (Cookie != null && Cookie == "2")
+            {
+                <div id="btndelivered" style="background-color:#00ff21; position:relative;width:80px; height:80px; border-radius:100%; top:50%; left:50%; transform:translate(-50%, -50%); display:flex; align-items:center; justify-content:center;cursor:pointer"><i class="fa fa-check" style="position:relative; font-size:xx-large; color:#ffffff"></i></div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+    $(document).ready(function () {
+        $("#btndelivered").on("click", function () {
+
+            var fullurl = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/';
+
+            var batchNumber = $("#batchnumber").text()
+
+            $.ajax(
+                {
+                    url: fullurl + 'Admin/Delivered',
+                    data: {
+                        bnum: batchNumber
+                    },
+                    type: 'GET',
+                    async: false,
+                    contentType: 'application/json; charset=utf-8',
+                    //cache: true,
+                    success: function (data) {
+
+                        var chknum = $("#btndelivered").attr("data-setbatchnum");
+                        $('*[data-batchnumber="' + chknum + '"]').remove();
+
+                        //console.log($('*[data-batchnumber="' + chknum + '"]').index('.spanbatch') + 1);
+
+                        //$(".divbatch").children.length();
+                        //alert($(".divbatch").children.length());
+                        $('.spanbatch').eq(0).click();
+                    },
+                    error: function (response) { console.log(response.responseText); },
+                    failure: function (response) { console.log(response.responseText); }
+                });
+
+        })
+    });
+</script>

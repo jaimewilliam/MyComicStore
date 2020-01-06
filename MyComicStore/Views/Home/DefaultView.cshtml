@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "DefaultView";
+}
+
+<div class="defaultview" style="position:relative;width:100%;height:100%;">
+    @{Html.RenderAction("Browse", "ComicStore", new { categoryId = 1, listId = 1, comTitle = string.Empty });}
+</div>
+
+

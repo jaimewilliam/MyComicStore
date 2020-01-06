@@ -1,0 +1,178 @@
+﻿@model MyComicStore.Models.Registration
+
+
+<link href="~/Plugins/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+
+<style>
+    /*.wrap {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }*/
+
+    .cancel {
+        width: 140px;
+        height: 45px;
+        font-family: 'Century Gothic';
+        font-size: large;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        color: #000;
+        background-color: #ccc;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+    }
+
+        .cancel:hover {
+            background-color: #343434;
+            box-shadow: 0px 15px 20px rgba(52, 52, 52, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+</style>
+
+<div style="position:relative; width:100%; height:100%; top:0; left:0">
+    <div style="position:relative; width:100%; height:90%">
+        <div style="position:relative; width:100%; height:50%; top:50%; left:50%; transform:translate(-50%, -50%)">
+            <div style="position:relative; width:100%; height:15%; display:flex; align-items:center; justify-content:center">
+                <span id="loginmessage" style="font-size:large"></span>
+            </div>
+            <div style="position:relative; width:100%; height:10%">
+                <input id="txtemail" type="text" placeholder="EMAIL" style="position:relative; width:100%; height:100%; font-size:large; border:none; border-bottom:1px solid #CCCCCC" />
+            </div>
+            <div style="position:relative; width:100%; height:10%">
+                <input id="txtpass" type="password" placeholder="PASSWORD" style="position:relative; width:100%; height:100%; font-size:large; border:none; border-bottom:1px solid #CCCCCC" />
+            </div>
+            <div style="position:relative; width:100%; height:25%; padding:10px; padding-left:0; padding-right:0">
+                <input id="btnlogin" type="button" value="LOGIN" style="background-color:#343434; position:relative; width:100%; height:100%; font-size:large; font-family:'Century Gothic'; color:#ffffff; letter-spacing: 1px; border-radius:5px; border:none" />
+            </div>
+        </div>
+    </div>
+    <div class="wrap" style="position:relative; width:100%; height:10%; padding:10px; padding-left:0; padding-right:0">
+        <button class="cancel" id="btncancel" type="button" value="" style="">CANCEL</button>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    $(document).ready(function () {
+
+        var fullurl = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/';
+
+        $("#btnlogin").on("click", function () {
+
+            if ($('#txtemail').val() !== "" &&
+                $('#txtpass').val() !== "") {
+
+                $.ajax(
+                    {
+                        url: fullurl + 'Login/Logged',
+                        data: {
+                            Email: $('#txtemail').val(),
+                            Password: $('#txtpass').val()
+                        },
+                        type: 'GET',
+                        async: false,
+                        contentType: 'application/json; charset=utf-8',
+                        cache: true,
+                        success: function (data) {
+
+                            if (data === "Username or Password is invalid!") {
+
+                                $('#loginmessage').text('Username or Password is invalid!');
+                                $('#loginmessage').css("color", "#ff0000");
+
+                            }
+                            else
+                            {
+                                if (data === "Admin/Employee")
+                                {
+                                    setTimeout(function () {
+
+                                        $("#modallogin_1").css('left', '30%');
+                                        $("#modallogin_1").css('transition', '0.5s ease-out');
+
+                                        setTimeout(function () {
+
+                                            $('#modallogin').css({
+                                                'opacity': '0',
+                                                'transition': '0.5s ease-out'
+                                            });
+                                            $("#modallogin").css("display", "none");
+                                            $('#loginmessage').text("");
+                                        }, 500, )
+
+                                    }, 200);
+
+                                    $("#btnLogin_out").text("LOGOUT");
+                                    $("#btnadmindiv").css("display", "block");
+                                    $("#btnadmindiv").append('<button class="adminclass" id="btnadmin" onclick="admin(this);" type="button" value="" style="">' + '<i class="fa fa-lock">' + '</i>' + '   Admin' + '</button>')
+
+                                } else
+                                {
+                                    setTimeout(function () {
+
+                                        $("#modallogin_1").css('left', '30%');
+                                        $("#modallogin_1").css('transition', '0.5s ease-out');
+
+                                        setTimeout(function () {
+
+                                            $('#modallogin').css({
+                                                'opacity': '0',
+                                                'transition': '0.5s ease-out'
+                                            });
+                                            $("#modallogin").css("display", "none");
+                                            $('#loginmessage').text("");
+                                        }, 500, )
+
+                                    }, 200);
+                                    $("#btnLogin_out").text("LOGOUT");
+                                }
+                            }
+
+
+                            //window.location.href = fullurl + 'Home/DefaultView';
+                            //success code
+                        },
+                        error: function (response) { console.log(response.responseText); },
+                        failure: function (response) { console.log(response.responseText); }
+                    });
+            } else {
+                $('#loginmessage').text("Enter Email & Password or Register!");
+                $('#loginmessage').css("color", "#ff0000")
+            }
+
+        })
+
+        $("#btncancel").on("click", function () {
+
+            setTimeout(function () {
+
+                $("#modallogin_1").css('left', '30%');
+                $("#modallogin_1").css('transition', '0.5s ease-out');
+
+                setTimeout(function () {
+
+                    $('#modallogin').css({
+                        'opacity': '0',
+                        'transition': '0.5s ease-out'
+                    });
+                    $("#modallogin").css("display", "none");
+                    $('#loginmessage').text("");
+                }, 500, )
+
+            }, 200);
+        })
+
+    });
+
+</script>
+

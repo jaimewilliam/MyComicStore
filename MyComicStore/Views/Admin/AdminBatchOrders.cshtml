@@ -1,0 +1,157 @@
+﻿@model IEnumerable<MyComicStore.Models.OrderDetails>
+
+
+<div style="position:relative; width:100%; height:100%; overflow-y:auto">
+    @foreach (var item in Model)
+    {
+        TimeSpan ts = DateTime.Now - item.DateCreated;
+        int tsdays = ts.Days;
+        string statusColor = "#0c00eb";
+
+        if (tsdays > 7)
+        {
+            statusColor = "#ff0000";
+        }
+        else if (item.IsView == true)
+        {
+            statusColor = "#00ba16";
+        }
+
+        <div class="" id="batchorders" style="position:relative; width:100%; height:15%; margin-bottom:5px;background-color:@statusColor;">
+            <div style=" position:relative; width:75%; height:100%; display:inline-block; vertical-align:top; padding:10px">
+                <div style="position:relative; width:100%; height:40%"><span style="font-size:large; font-family:'Century Gothic'; font-weight:bold; color:#FFFFFF">ORDER NO: @item.BatchNumber</span></div>
+                <div style="position:relative; width:100%; height:30%"><span style="font-size:small; font-family:'Century Gothic'; font-weight:bold; color:#FFFFFF">QTY: @item.Quantity</span></div>
+                <div style="position:relative; width:100%; height:30%"><span style="font-size:small; font-family:'Century Gothic'; font-weight:bold; color:#FFFFFF">PRICE: @item.UnitPrice</span></div>
+            </div><!--
+         --><div class="externalLink" onclick="batchnum($(this));" style="background-color:rgba(0,0,0,0.2); position:relative; width:25%; height:100%; display:inline-block; vertical-align:top; cursor:pointer" data-batchnumber="@item.BatchNumber" data-orderdetailsid="@item.OrderDetailsId" data-custId="@item.CustId" data-regId="@item.Assignedto_RegId" data-statId="@item.OrderStatusId">
+                <span class="fa fa-external-link" style="position:relative; font-size:40px; color:#ffffff; top:50%; left:50%; transform:translate(-50%, -50%)"></span>
+            </div>
+        </div>
+
+    }
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    function batchnum(div) {
+
+        var fullurl = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/';
+        
+        var batchNumber = $(div).attr('data-batchnumber');
+        var ordetailsid = $(div).attr('data-orderdetailsid');
+        var custid = $(div).attr('data-custId');
+        var statid = $(div).attr('data-statId');
+        var regid = $(div).attr('data-regId');
+        //alert(statid);
+
+        $.ajax(
+            {
+                url: fullurl + 'Admin/AdminOrderDetails',
+                data: {
+                    bnum: batchNumber,
+                    orderDetailsId: ordetailsid,
+                    custId: custid,
+                    regId: regid
+                },
+                type: 'GET',
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                //cache: true,
+                success: function (data) {
+
+
+                    $('.modalbatch').css("display", "block", );
+
+                    setTimeout(function () {
+                        $(".modalbatch").css('opacity', '1');
+                        $(".modalbatch").css('transition', '0.5s ease-in');
+
+                        setTimeout(function () {
+                            $('.modalbatch_1').css({
+                                'opacity': '1',
+                                'transition': '0.5s ease-in'
+                            });
+                        }, 500, )
+
+                    }, 200);
+
+                    var parentcolor = $(div).parent().css("background-color");
+                    if (parentcolor == 'rgb(255, 0, 0)')
+                    {
+                        
+                    } else
+                    {
+                        $(div).parent().css("background-color", "#00ba16")
+                    }
+                    
+                    
+                    $('.modalbatch_1').children().remove();
+                    $('.modalbatch_1').html(data);
+
+                    var typeId = 2;
+                    //alert(typeId)
+                    //alert(fullurl + 'Admin/Deliverby');
+                    $.ajax(
+                        {
+                            url: fullurl + 'Admin/Deliverby',
+                            data: {
+                                typeid: typeId
+                            },
+                            type: 'GET',
+                            async: false,
+                            contentType: 'application/json; charset=utf-8',
+                            //cache: true,
+                            success: function (data) {
+
+                                $('#delivery').children().remove();
+
+                                if (statid == 2) {
+
+                                    $('#delivery').remove();
+                                    $('#btntransit').remove();
+
+                                } else if (statid == 1) {
+
+                                    $('#assdeliv').remove();
+
+                                    $.each(data, function (i, item) {
+                                        //alert(item.RegId);
+                                        var myObject = item;
+                                        var deliverby = $('<option class="" id="' + myObject.RegId +
+                                            '" style="position:relative;display:block;background-color:#f5f5f5; border:1px Solid #464646;padding:10px">'
+                                            + myObject.CompleteName + '</option>');
+                                        $(deliverby).appendTo($('#delivery'));
+                                        //$('#delivery').append($(deliverby));
+                                        // alert(myObject.RegId + myObject.CompleteName);
+                                    });
+                                } else if (statid == 3) {
+                                    $('#delivery').remove();
+                                    $('#btntransit').remove();
+                                }
+                                //alert($('#delivery').children().length);
+                                //**loop through array in jQuery!
+                                //for (var i = 0; i < data.length; i++) {
+                                //    var deliverby = $('<option class="" onclick="" style="position:relative;display:block;background-color:#f5f5f5; border:1px Solid #464646;padding:10px">' + data[i] + '</option>');
+                                //    $(deliverby).appendTo($('#delivery'));
+                                //}
+
+                            },
+                            error: function (response) { console.log(response.responseText); },
+                            failure: function (response) { console.log(response.responseText); }
+                        });
+
+                    //setTimeout(function () {
+                        
+                    //}, 2000);
+                },
+                error: function (response) { console.log(response.responseText); },
+                failure: function (response) { console.log(response.responseText); }
+            });
+    }
+
+    $(document).ready(function () {
+       
+    });
+</script>

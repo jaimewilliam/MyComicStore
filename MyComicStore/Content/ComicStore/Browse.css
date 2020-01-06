@@ -1,0 +1,12 @@
+﻿body {
+}
+
+/*cube is somewhere inside the container:*/
+.imgdiv:hover .details {
+    top: 70%;
+    transition: top 0.5s;
+}
+
+.details {
+    top: 100%
+}

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<MyComicStore.Models.Categories>
+
+
+<div style="position:relative; width:100%; height:100%">
+    <select class="" id="txtcateg" name="list" style="position:relative; width:100%; height:100%; font-size:large; border:none; border-bottom:2px solid #343434">
+        <option disabled selected>Select Category</option>
+        @foreach (var name in Model)
+        {
+            <option class="category" value="@name.CategoryId" >@name.Name</option>
+        }
+    </select>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+    $(document).ready(function () {
+        $("#txtcateg").val($('.categoryidholder').text());
+    });
+</script>
+

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MyComicStore.Models.OrderDetails>
+
+<div style="position:relative; width:100%; height:100%; top:0; left:0">
+    <div class="divbatch" style="background-color:#ffffff; position:relative; width:30%; height:100%; display:inline-block;  vertical-align:top; padding:10px; overflow-y:auto">
+        @foreach (var item in Model)
+        {
+            <div class="" data-batchnumber="@item.BatchNumber" data-delivcustid="@item.CustId"  onclick="findcoor($(this));" style="background-color:#eee; position:relative; width:100%; height:5%; border-radius:5px; margin-bottom:10px; padding:10px; cursor:pointer; align-items:center; display:flex">
+                <span style="font-size:large; font-family:'Century Gothic'; font-weight:bold">ORDER NO: <span class="spanbatch">@item.BatchNumber</span></span>
+            </div>
+        }
+    </div><!--
+ --><div style="position:relative; width:70%; height:100%; display:inline-block; vertical-align:top;padding:10px">
+        @{Html.RenderAction("Gmap", "Admin", new { delivprov = 19, delivcity = 15 });}
+    </div>
+</div>
+s
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    $(document).ready(function () {
+        $('.spanbatch').eq(0).click();
+    })
+
+    function findcoor(coor) {
+
+        var fullurl = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/';
+
+        var setbatchnum = $(coor).find('.spanbatch').text();
+        $("#batchnumber").html(setbatchnum);
+        var delcustid = $(coor).attr('data-delivcustid');
+
+        $.ajax(
+            {
+                url: fullurl + 'Admin/Findloc',
+                data: {
+                    delcustId: delcustid
+                },
+                type: 'GET',
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                cache: true,
+                success: function (data) {
+
+                    var LAT = data.lat;
+                    var LON = data.lon;
+                    $("#mapid").attr("src", "https://maps.google.com/maps?q=" + LAT + "," + LON + "&hl=es&z=14&amp" + "&output=embed")
+
+                    
+                    $('#fullname').text(data.name);
+                    $('#address').text(data.fulladdress);
+                    $('#email').text(data.email);
+                    $('#phone').text(data.phone);
+
+                    $('#btndelivered').attr("data-setbatchnum",setbatchnum);
+                },
+                error: function (response) { console.log(response.responseText); },
+                failure: function (response) { console.log(response.responseText); }
+            });
+
+    }
+
+</script>
+
+
+
+
+

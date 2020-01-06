@@ -1,0 +1,14 @@
+﻿body {
+}
+
+/**:focus {
+    outline: none;
+}*/
+
+.categoryitem:hover {
+    background-color: #2a2a2a;
+}
+
+a.my-class {
+    color: #ffffff;
+}

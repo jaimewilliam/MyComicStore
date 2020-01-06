@@ -1,0 +1,106 @@
+﻿@model IEnumerable<MyComicStore.Models.OrderDetails>
+
+
+<div style="position:relative; width:100%; height:100%; top:0; left:0">
+    
+        <div style="background-color:#ffffff; position:relative; width:100%; height:25%;">
+            <div style="background-color:#986f39; position:relative; width:100%; height:25%; text-align:center"><span style="position:relative; font-size:large; color:#ffffff">BATCH NUMBER:  @ViewBag.batchnumber</span></div>
+            <div style="position:relative; width:100%; height:25%"><span style="position:relative; font-size:large; margin-left:10px">NAME: @ViewBag.Name</span></div>
+            <div style="position:relative; width:100%; height:25%;"><span style="position:relative; font-size:large; margin-left:10px">ADDRESS: @ViewBag.Address</span></div>
+            <div style="position:relative; width:100%; height:25%;">
+                <div style="position:relative; width:50%; height:100%; display:inline-block; vertical-align:top"><span style="position:relative; font-size:large; margin-left:10px">PHONE # @ViewBag.Contact</span></div><!--
+             --><div style="position:relative; width:50%; height:100%; display:inline-block; vertical-align:top"><span style="position:relative; font-size:large; margin-left:10px">EMAIL:  @ViewBag.Email</span></div>
+            </div>
+        </div>
+        <div style="position:relative; width:100%; height:65%; padding:20px; overflow-y:auto">
+            @foreach (var item in Model)
+            {
+                <div id="batchnumdiv" style="position:relative; width:100px; height:120px; vertical-align:top; display:inline-block; margin:10px" data-batchnumber="@item.BatchNumber" data-custid="@item.CustId">
+                    <div style="background-image: url('@item.Comics.ImgUrl'); background-repeat:no-repeat; background-size:cover; background-position:center; position:relative; width:100px; height:100px; border:3px solid #986f39">
+                        <div style="background-color:#986f39; position:absolute; width:25px; height:25px; top:-12%; left:90%; text-align:center; border-radius:100%">
+                            <span style="position:relative; font-size:large; color:#ffffff">@item.Quantity</span>
+                        </div>
+                    </div>
+                    <div style="position:relative; width:100px; height:20px; text-align:center">
+                        <span style="position:relative; color:#000000">@item.Comics.Title</span>
+                    </div>
+                </div>
+            }
+            </div>
+    
+    <div style="background-color:#ffffff; position:relative; width:100%; height:10%;">
+        <div id="deliverydiv" style="position:relative; width:50%; height:100%; display:inline-block; vertical-align:top; padding:5px">
+            <div id="assdeliv" style="position:relative; width:100%; height:auto; top:50%; left:50%; transform:translate(-50%, -50%); padding:5px">
+                <span style="position:relative; color:#000000;font-size:large">ASSIGNED DELIVERY TO: @ViewBag.Assigned</span>
+            </div>
+            <select class="" id="delivery" name="" style="position:relative; width:100%; height:100%; color:#757575; font-size:large">
+                <option>ASSIGN DELIVERY TO:</option>
+            </select>
+        </div><!--
+     --><div style="position:relative; width:25%; height:100%; display:inline-block; vertical-align:top; padding:5px">
+            <input id="btntransit" type="button" value="ASSIGN TO TRANSIT" style="position:relative; width:100%; height:100%; background-color:inherit" />
+        </div><!--
+     --><div style="position:relative; width:25%; height:100%; display:inline-block; vertical-align:top; padding:5px">
+            <input id="btncancel" type="button" value="CLOSE" style="position:relative; width:100%; height:100%; background-color:inherit" />
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#btncancel").on("click", function () {
+
+            setTimeout(function () {
+                $('.modalbatch_1').css({
+                    'opacity': '0',
+                    'transition': '0.5s ease-out'
+                });
+
+                setTimeout(function () {
+                    $(".modalbatch").css('opacity', '0');
+                    $(".modalbatch").css('transition', '0.5s ease-out');
+
+                    $('.modalbatch').css("display", "none", );
+
+                }, 500);
+
+            }, 200, )
+        
+        })
+
+        $("#btntransit").on("click", function () {
+
+            var fullurl = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/';
+
+            var batchNumber = $("#batchnumdiv").attr('data-batchnumber');
+            var cId = $("#delivery :selected").attr('id');
+            //alert(cId);
+            $.ajax(
+                {
+                    url: fullurl + 'Admin/InTransit',
+                    data: {
+                        bnum: batchNumber,
+                        cid: cId
+                    },
+                    type: 'GET',
+                    async: false,
+                    contentType: 'application/json; charset=utf-8',
+                    //cache: true,
+                    success: function (data) {
+
+                        $("#orders").load(" #orders > *"); 
+                    },
+                    error: function (response) { console.log(response.responseText); },
+                    failure: function (response) { console.log(response.responseText); }
+                });
+
+        })
+
+    });
+
+</script>
+
