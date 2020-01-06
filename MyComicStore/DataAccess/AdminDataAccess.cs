@@ -75,5 +75,94 @@ namespace MyComicStore.DataAccess
             IEnumerable<OrderDetails> bonum = storeDB.OrderDetails.Where(s => s.OrderStatusId == 2).GroupBy(x => x.BatchNumber).Select(r => r.FirstOrDefault());
             return bonum;
         }
+
+        public static IEnumerable<OrderDetails> Bonum2(int chkcookie)
+        {
+            IEnumerable<OrderDetails> bonum = storeDB.OrderDetails.Where(x => x.Assignedto_RegId == chkcookie).Where(s => s.OrderStatusId == 2).GroupBy(x => x.BatchNumber).Select(r => r.FirstOrDefault());
+            return bonum;
+        }
+
+        public static Registration Regs(int delcustId)
+        {
+            var registration = storeDB.Registrations.Where(l => l.RegId == delcustId).FirstOrDefault();
+            return registration;
+        }
+
+        //public static Registration City(Registration registration)
+        //{
+        //    string city = storeDB.Cities.Where(c => c.CityId == registration.City).FirstOrDefault().CityName;
+        //    return city;
+        //}
+
+        public static Registration Reguser(int newcookie)
+        {
+            var regUser = storeDB.Registrations.Where(x => x.RegId == newcookie).FirstOrDefault();
+            return regUser;
+        }
+
+        public static MapCoordinates Map()
+        {
+            var gmap = storeDB.MapCoordinates.FirstOrDefault();
+            return gmap;
+        }
+
+        public static IEnumerable<Comics> Comics()
+        {
+            IEnumerable<Comics> displaycomics = storeDB.Comics.ToList();
+            return displaycomics;
+        }
+
+        public static Comics AddEditcomic(int comicid)
+        {
+            var displaycomics = storeDB.Comics.Where(c => c.ComicId == comicid).FirstOrDefault();
+            return displaycomics;
+        }
+
+        public static void SaveComics(Comics comics)
+        {
+            storeDB.Comics.Add(comics);
+            storeDB.SaveChanges();
+        }
+
+        public static Comics Editcomics(int comicId)
+        {
+            var comic = storeDB.Comics.Where(i => i.ComicId == comicId).FirstOrDefault();
+            return comic;
+        }
+
+        public static void UpdateComics(Comics comics)
+        {
+            storeDB.SaveChanges();
+        }
+
+        public static Comics Delcomics(int comicid)
+        {
+            var delcomic = storeDB.Comics.Where(c => c.ComicId == comicid).FirstOrDefault();
+            return delcomic;
+        }
+
+        public static void Delsave(Comics delcomic)
+        {
+            storeDB.Comics.Remove(delcomic);
+            storeDB.SaveChanges();
+        }
+
+        public static IEnumerable<Categories> SelectCategory()
+        {
+            IEnumerable<Categories> category = storeDB.Categories.Where(c => c.Name != "All").ToList();
+            return category;
+        }
+
+        public static Registration Usertype(int newcookie)
+        {
+            var usertype = storeDB.Registrations.Where(ut => ut.RegId == newcookie).FirstOrDefault();
+            return usertype;
+        }
+
+        public static IEnumerable<AdminMenu> Menus()
+        {
+            IEnumerable<AdminMenu> menus = storeDB.AdminMenus.ToList();
+            return menus;
+        }
     }
 }

@@ -133,22 +133,19 @@ namespace MyComicStore.Controllers
 
                 if (chkUser.TypeOfUserId == 2)
                 {
-                    bonum = storeDB.OrderDetails.Where(x => x.Assignedto_RegId == chkcookie).Where(s => s.OrderStatusId == 2).GroupBy(x => x.BatchNumber).Select(r => r.FirstOrDefault());
+                    bonum = AdminDataAccess.Bonum2(chkcookie);
 
                 }
 
                 return PartialView(bonum);
             }
-
-            //var bonum = storeDB.OrderDetails.GroupBy(x => x.BatchNumber).Select(r => r.FirstOrDefault());
-            //return PartialView(bonum);
         }
 
 
         public JsonResult Findloc(int delcustId)
         {
             
-            var registration = storeDB.Registrations.Where(l => l.RegId == delcustId).FirstOrDefault();
+            var registration = AdminDataAccess.Regs(delcustId);
             
             string name = registration.CompleteName;
             string email = registration.Email;
@@ -169,14 +166,14 @@ namespace MyComicStore.Controllers
             if (Request.Cookies["login:cookie"] != null)
             {
                 var newcookie = int.Parse(Request.Cookies["login:cookie"]["RegId"].ToString());
-                var regUser = storeDB.Registrations.Where(x => x.RegId == newcookie).FirstOrDefault();
+                var regUser = AdminDataAccess.Reguser(newcookie);
 
                 if (regUser != null)
                 {
                     ViewBag.Cookie = regUser.TypeOfUserId.ToString();
                 }
             }
-            var gmap = storeDB.MapCoordinates.FirstOrDefault();
+            var gmap = AdminDataAccess.Map();
             return PartialView(gmap);
         }
 
@@ -186,15 +183,13 @@ namespace MyComicStore.Controllers
             {
                 return RedirectToAction("DefaultView", "Home");
             }
-            var displaycomics = storeDB.Comics.ToList();
+            IEnumerable<Comics> displaycomics = AdminDataAccess.Comics();
             return PartialView(displaycomics);
         }
 
         public ActionResult AddEditComics(int comicid)
         {
-           
-            var displaycomics = storeDB.Comics.Where(c => c.ComicId == comicid).FirstOrDefault();
-
+            var displaycomics = AdminDataAccess.AddEditcomic(comicid);
             return PartialView(displaycomics);
         }
         
@@ -227,7 +222,7 @@ namespace MyComicStore.Controllers
                     }
                     var dateTime = DateTime.Now;
 
-                    var comic = new Comics
+                    var comics = new Comics
                     {
                         ImgUrl = filefolder.Replace("~", ""),
                         Price = int.Parse(Price),
@@ -237,10 +232,9 @@ namespace MyComicStore.Controllers
                         PubDate = dateTime
                     };
 
-                    storeDB.Comics.Add(comic);
-                    storeDB.SaveChanges();
+                    AdminDataAccess.SaveComics(comics);
 
-                    var id = comic.ComicId;
+                    var id = comics.ComicId;
 
                     errorMessage = id.ToString();
                 }
@@ -251,7 +245,7 @@ namespace MyComicStore.Controllers
             }
             else
             {
-                var comic = storeDB.Comics.Where(i => i.ComicId == comicId).FirstOrDefault();
+                var comic = AdminDataAccess.Editcomics(comicId);
                 if (comic != null)
                 {
                     if (comic.ComicId == comicId)
@@ -279,7 +273,7 @@ namespace MyComicStore.Controllers
                         comic.CategoryId = int.Parse(Categ);
                         comic.Description = Descript;
 
-                        storeDB.SaveChanges();
+                        AdminDataAccess.UpdateComics(comic);
 
                         errorMessage = "Updated!";
                     }
@@ -294,11 +288,10 @@ namespace MyComicStore.Controllers
         public JsonResult DeleteComics(int comicid)
         {
             
-            var delcomic = storeDB.Comics.Where(c => c.ComicId == comicid).FirstOrDefault();
+            var delcomic = AdminDataAccess.Delcomics(comicid);
             if (delcomic != null)
             {
-                storeDB.Comics.Remove(delcomic);
-                storeDB.SaveChanges();
+                AdminDataAccess.Delsave(delcomic);
             }
             return Json(delcomic, JsonRequestBehavior.AllowGet);
         }
@@ -306,7 +299,7 @@ namespace MyComicStore.Controllers
         public ActionResult SelectCategory()
         {
 
-            var category = storeDB.Categories.Where(c => c.Name != "All").ToList();
+            IEnumerable<Categories> category = AdminDataAccess.SelectCategory();
             return PartialView(category);
         }
 
@@ -330,14 +323,13 @@ namespace MyComicStore.Controllers
             if (cookie != null)
             {
                 var newcookie = int.Parse(cookie["RegId"].ToString());
-                //var newcookie = Convert.ToInt32(cookie);
-                var usertype = storeDB.Registrations.Where(ut => ut.RegId == newcookie).FirstOrDefault();
+                var usertype = AdminDataAccess.Usertype(newcookie);
 
                 if (usertype != null)
                 {
                     if (usertype.TypeOfUserId == 2)
                     {
-                        menus = storeDB.AdminMenus.Where(i => i.MenuId != 2).ToList();
+                        menus = AdminDataAccess.Menus().Where(i => i.MenuId != 2).ToList();
                     }
                 }
             }

@@ -129,14 +129,19 @@
                                 } else if (statid == 3) {
                                     $('#delivery').remove();
                                     $('#btntransit').remove();
-                                }
-                                //alert($('#delivery').children().length);
-                                //**loop through array in jQuery!
-                                //for (var i = 0; i < data.length; i++) {
-                                //    var deliverby = $('<option class="" onclick="" style="position:relative;display:block;background-color:#f5f5f5; border:1px Solid #464646;padding:10px">' + data[i] + '</option>');
-                                //    $(deliverby).appendTo($('#delivery'));
-                                //}
 
+                                    //$.each(data, function (i, item) {
+                                    //    //alert(item.RegId);
+                                    //    var myObject = item;
+                                    //    var deliverby = $('<option class="" id="' + myObject.RegId +
+                                    //        '" style="position:relative;display:block;background-color:#f5f5f5; border:1px Solid #464646;padding:10px">'
+                                    //        + myObject.CompleteName + '</option>');
+                                    //    $(deliverby).appendTo($('#delivery'));
+                                    //    $('#assign').html();
+                                    //    alert($('#assign').val());
+                                    //});
+                                }
+                                
                             },
                             error: function (response) { console.log(response.responseText); },
                             failure: function (response) { console.log(response.responseText); }
