@@ -45,5 +45,35 @@ namespace MyComicStore.DataAccess
             var assigned = storeDB.Registrations.Where(c => c.RegId == regId).FirstOrDefault();
             return assigned;
         }
+
+        //public static IEnumerable<OrderDetails> Getorders(int bnum)
+        //{
+        //    IEnumerable<OrderDetails> orders = storeDB.OrderDetails.Include(o => o.Comics).OrderBy(o => o.OrderDetailsId).Where(o => o.BatchNumber == bnum);
+        //    return orders;
+        //}
+
+        public static IEnumerable<OrderDetails> Orderstatus(int bnum)
+        {
+            IEnumerable<OrderDetails> orders = storeDB.OrderDetails.Where(o => o.BatchNumber == bnum).ToList();
+            return orders;
+        }
+
+        public static IEnumerable<Registration> Deliver(int typeid)
+        {
+            var deliver = storeDB.Registrations.Where(d => d.TypeOfUserId == typeid).ToList();
+            return deliver;
+        }
+
+        public static Registration Deliveries(int chkcookie)
+        {
+            var chkUser = storeDB.Registrations.Where(x => x.RegId == chkcookie).FirstOrDefault();
+            return chkUser;
+        }
+
+        public static IEnumerable<OrderDetails> Bonum1()
+        {
+            IEnumerable<OrderDetails> bonum = storeDB.OrderDetails.Where(s => s.OrderStatusId == 2).GroupBy(x => x.BatchNumber).Select(r => r.FirstOrDefault());
+            return bonum;
+        }
     }
 }

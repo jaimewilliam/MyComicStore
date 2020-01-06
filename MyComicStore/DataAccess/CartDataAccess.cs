@@ -51,13 +51,13 @@ namespace MyComicStore.DataAccess
             storeDB.SaveChanges();
         }
 
-        public static IEnumerable<Provinces> searchprovince(int countryid)
+        public static IEnumerable<Provinces> Searchprovince(int countryid)
         {
             var provinces = storeDB.Provinces.Where(p => p.CountryId == countryid).ToList();
             return provinces;
         }
 
-        public static IEnumerable<Cities> searchcity(int provinceid)
+        public static IEnumerable<Cities> Searchcity(int provinceid)
         {
             var cities = storeDB.Cities.Where(c => c.ProvinceId == provinceid).ToList();
             return cities;

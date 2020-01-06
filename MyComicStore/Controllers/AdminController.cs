@@ -79,7 +79,7 @@ namespace MyComicStore.Controllers
         {
             string errorMessage = "";
 
-            var orders = storeDB.OrderDetails.Where(o => o.BatchNumber == bnum).ToList();
+            IEnumerable<OrderDetails> orders = AdminDataAccess.Orderstatus(bnum);
 
             foreach (var batchitem in orders)
             {
@@ -95,7 +95,7 @@ namespace MyComicStore.Controllers
         {
             string errorMessage = "";
 
-            var orders = storeDB.OrderDetails.Where(o => o.BatchNumber == bnum).ToList();
+            IEnumerable<OrderDetails> orders = AdminDataAccess.Orderstatus(bnum);
 
             foreach (var batchitem in orders)
             {
@@ -109,7 +109,8 @@ namespace MyComicStore.Controllers
         public JsonResult Deliverby(int typeid)
         {
             //var deliver = storeDB.Registrations.Where(d => d.TypeOfUserId == typeid).Select(d => d.CompleteName).ToList();
-            var deliver = storeDB.Registrations.Where(d => d.TypeOfUserId == typeid).Select(d => new { d.CompleteName, d.RegId}).ToList();
+            var deliver = AdminDataAccess.Deliver(typeid);
+            deliver.Select(d => new { d.CompleteName, d.RegId}).ToList();
             return Json(deliver, JsonRequestBehavior.AllowGet);
         }
 
@@ -127,8 +128,8 @@ namespace MyComicStore.Controllers
             else
             {
                 var chkcookie = int.Parse(Request.Cookies["login:cookie"]["RegId"].ToString());
-                var chkUser = storeDB.Registrations.Where(x => x.RegId == chkcookie).FirstOrDefault();
-                var bonum = storeDB.OrderDetails.Where(s => s.OrderStatusId == 2).GroupBy(x => x.BatchNumber).Select(r => r.FirstOrDefault());
+                var chkUser = AdminDataAccess.Deliveries(chkcookie);
+                IEnumerable<OrderDetails> bonum = AdminDataAccess.Bonum1();
 
                 if (chkUser.TypeOfUserId == 2)
                 {

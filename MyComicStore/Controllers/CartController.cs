@@ -28,14 +28,14 @@ namespace MyComicStore.Controllers
         public JsonResult SearchProvinces(int countryid)
         {
             //var provinces = storeDB.Provinces.Where(p => p.CountryId == countryid).Select(p => p.ProvinceName).ToList();
-            var provinces = CartDataAccess.searchprovince(countryid);
+            var provinces = CartDataAccess.Searchprovince(countryid);
             provinces.Select(p => new { p.ProvinceName, p.ProvinceId }).ToList();
             return Json(provinces, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult SearchCities(int provinceid)
         {
-            var cities = CartDataAccess.searchcity(provinceid);
+            var cities = CartDataAccess.Searchcity(provinceid);
             cities.Select(c => new { c.CityName, c.CityId }).ToList();
             return Json(cities, JsonRequestBehavior.AllowGet);
         }
