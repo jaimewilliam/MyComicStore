@@ -43,7 +43,8 @@ namespace MyComicStore.Controllers
                 var orderDetails = AdminDataAccess.GetOrderDeatilsByBatchNumber(batch.BatchNumber);
                 
                 batch.Quantity = orderDetails.Sum(x => x.Quantity);
-                batch.UnitPrice = orderDetails.Sum(x => (x.Quantity * x.UnitPrice));
+                batch.UnitPrice = orderDetails.Sum(x => x.UnitPrice);
+                //batch.UnitPrice = orderDetails.Sum(x => (x.Quantity * x.UnitPrice));
             }
 
             return PartialView(batchorders);

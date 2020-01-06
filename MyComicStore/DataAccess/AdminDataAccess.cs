@@ -24,8 +24,8 @@ namespace MyComicStore.DataAccess
 
         public static IEnumerable<OrderDetails> GetOrderDeatilsByBatchNumber(int BatchNumber)
         {
-            var quantity = storeDB.OrderDetails.Where(x => x.BatchNumber == BatchNumber);
-            return quantity;
+            var orderDetails = storeDB.OrderDetails.Where(x => x.BatchNumber == BatchNumber);
+            return orderDetails;
         }
 
         public static int Batchnumber(int orderDetailsId)
