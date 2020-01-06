@@ -94,7 +94,7 @@ namespace MyComicStore.Controllers
                         CartDataAccess.SaveCustomer(customerReg);
                     }
 
-                    var batchNumber = (0 + CartDataAccess.Orderdatails()).ToString().PadLeft(10, '0');
+                    var batchNumber = (0 + CartDataAccess.Orderdetails()).ToString().PadLeft(10, '0');
                     foreach (var comic in comicdetails)
                     {
                         var comicId = Convert.ToInt32(comic.Split('!')[0]);
@@ -104,7 +104,7 @@ namespace MyComicStore.Controllers
                         {
                             ComicId = comicId,
                             Quantity = comicQty,
-                            UnitPrice = storeDB.Comics.Where(u => u.ComicId == comicId).Select(u => u.Price).FirstOrDefault(),
+                            UnitPrice = CartDataAccess.Unitprice(comicId),
                             DateCreated = dateTime,
                             CustId = customerReg.RegId,
                             BatchNumber = int.Parse(batchNumber),
@@ -141,7 +141,7 @@ namespace MyComicStore.Controllers
             {
 
                 var dateTime = DateTime.Now;
-                var customerReg = storeDB.Registrations.Where(e => e.Email == email).FirstOrDefault();
+                var customerReg = CartDataAccess.Chkemail(email);
 
                 if (customerReg != null)
                 {
@@ -166,7 +166,7 @@ namespace MyComicStore.Controllers
                     CartDataAccess.SaveCustomer(customerReg);
                 }
 
-                var batchNumber = (0 + storeDB.OrderDetails.Count()).ToString().PadLeft(10,'0');
+                var batchNumber = (0 + CartDataAccess.Orderdetails()).ToString().PadLeft(10,'0');
                 foreach (var comic in comicdetails)
                 {
                     var comicId = Convert.ToInt32(comic.Split('!')[0]);
@@ -177,7 +177,7 @@ namespace MyComicStore.Controllers
                     {
                         ComicId = comicId,
                         Quantity = comicQty,
-                        UnitPrice = storeDB.Comics.Where(u => u.ComicId == comicId).Select(u => u.Price).FirstOrDefault(),
+                        UnitPrice = CartDataAccess.Unitprice(comicId),
                         DateCreated = dateTime,
                         CustId = customerReg.RegId,
                         BatchNumber = int.Parse(batchNumber),

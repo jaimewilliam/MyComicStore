@@ -24,9 +24,14 @@ namespace MyComicStore.DataAccess
             return customerReg;
         }
 
-        public static int Orderdatails()
+        public static int Orderdetails()
         {
             return storeDB.OrderDetails.Count();
+        }
+
+        public static decimal Unitprice(int comicId)
+        {
+            return storeDB.Comics.Where(u => u.ComicId == comicId).Select(u => u.Price).FirstOrDefault();
         }
 
         public static void SaveCustomer(Registration customerReg)

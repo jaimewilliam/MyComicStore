@@ -158,6 +158,7 @@
     <Compile Include="Controllers\ComicStoreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="DataAccess\AdminDataAccess.cs" />
     <Compile Include="DataAccess\CartDataAccess.cs" />
     <Compile Include="DataAccess\ComicStoreDataAccess.cs" />
     <Compile Include="Global.asax.cs">

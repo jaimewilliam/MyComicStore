@@ -8,6 +8,7 @@ using System.Data.Entity;
 using System.IO;
 using System.Web.Helpers;
 using System.Drawing;
+using MyComicStore.DataAccess;
 
 namespace MyComicStore.Controllers
 {
@@ -27,7 +28,7 @@ namespace MyComicStore.Controllers
                 //string cookie = Request.Cookies["login:cookie"]["TypeOfUser"].ToString();
                 //ViewBag.Cookie = cookie;
             }
-            var batchorders = storeDB.OrderStatus.ToList();
+            IEnumerable <OrderStatus> batchorders = AdminDataAccess.Getorderstatus();
             return PartialView(batchorders);
 
         }
@@ -36,11 +37,13 @@ namespace MyComicStore.Controllers
         public ActionResult AdminBatchOrders(int orderStatusId)
         {
 
-            IEnumerable<OrderDetails> batchorders = storeDB.OrderDetails.Where(x => x.OrderStatusId == orderStatusId).GroupBy(x => x.BatchNumber).Select(r => r.FirstOrDefault());
+            IEnumerable<OrderDetails> batchorders = AdminDataAccess.Getorderdetails(orderStatusId).GroupBy(x => x.BatchNumber).Select(r => r.FirstOrDefault());
             foreach (var batch in batchorders)
             {
-                batch.Quantity = storeDB.OrderDetails.Where(x => x.BatchNumber == batch.BatchNumber).Sum(x => x.Quantity);
-                batch.UnitPrice = storeDB.OrderDetails.Where(x => x.BatchNumber == batch.BatchNumber).Sum(x => (x.Quantity * x.UnitPrice));
+                var orderDetails = AdminDataAccess.GetOrderDeatilsByBatchNumber(batch.BatchNumber);
+                
+                batch.Quantity = orderDetails.Sum(x => x.Quantity);
+                batch.UnitPrice = orderDetails.Sum(x => (x.Quantity * x.UnitPrice));
             }
 
             return PartialView(batchorders);
@@ -48,25 +51,18 @@ namespace MyComicStore.Controllers
 
         public ActionResult AdminOrderDetails(int bnum, int orderDetailsId, int custId, int regId)
         {
-            int batchnum = storeDB.OrderDetails.Where(bn => bn.OrderDetailsId == orderDetailsId).Select(bn => bn.BatchNumber).FirstOrDefault();
-            ViewBag.batchnumber = batchnum;
+            ViewBag.batchnumber = AdminDataAccess.Batchnumber(orderDetailsId);
 
-            var customer = storeDB.Registrations.Where(c => c.RegId == custId).FirstOrDefault();
+            var customer = AdminDataAccess.Getcustomer(custId);
             ViewBag.Name = customer.CompleteName;
             ViewBag.Contact = customer.ContactNumber;
             ViewBag.Address = customer.Address;
             ViewBag.Email = customer.Email;
 
-            if (regId == 0)
+            if (regId != 0)
             {
-                
+                ViewBag.Assigned = AdminDataAccess.Assigned(regId).CompleteName;
             }
-            else
-            {
-                var assigned = storeDB.Registrations.Where(c => c.RegId == regId).FirstOrDefault();
-                ViewBag.Assigned = assigned.CompleteName;
-            }
-
 
             var orders = storeDB.OrderDetails.Include(o => o.Comics).OrderBy(o => o.OrderDetailsId).Where(o => o.BatchNumber == bnum);
 
