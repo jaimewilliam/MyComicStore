@@ -152,16 +152,16 @@
                                     var dynamicCover = $('<div style="position: relative; width:170px; height:250px;display:inline-block; vertical-align:top;background-color:inherit;margin:5px">' +
 
                                         '<div class="imgdiv" onclick="" style="position:relative; width:100%; height:100%; overflow:hidden" data-comicid="' + id + '">' +
-                                        '<div class="imgdiv1" style="position: relative; background-size:contain; background-position: center; background-repeat:no-repeat; width:100%; height:100%;display:inline-block; vertical-align:top; background-color:#000000">' +
+                                        '<div class="imgdiv1" id="' + id + '" style="position: relative; background-size:contain; background-position: center; background-repeat:no-repeat; width:100%; height:100%;display:inline-block; vertical-align:top; background-color:#000000">' +
                                         '<div class="details" style="background-color:rgba(0,0,0,0.5);position:relative; width:100%; height:100%; z-index:1">' +
                                         '<div style="position:relative; width:40%; height:60%; top:50%; left:50%; transform:translate(-50%, -50%)">' +
                                         '<div style="position:relative; width:100%; height:50%">' +
-                                        '<div style="background-color:#ffffff; position:relative; width:50px; height:50px; border-radius:100px; display:flex; align-items:center; justify-content:center; cursor:pointer; top:50%; left:50%; transform:translate(-50%, -50%)">' +
+                                        '<div onclick="editcomic($(this));" style="background-color:#ffffff; position:relative; width:50px; height:50px; border-radius:100px; display:flex; align-items:center; justify-content:center; cursor:pointer; top:50%; left:50%; transform:translate(-50%, -50%)" data-comicid="' + id + '">' +
                                         '<span class="fa fa-edit" style="position:relative; font-size:x-large">' + '</span>' +
                                         '</div>' +
                                         '</div>' +
                                         '<div style="position:relative; width:100%; height:50%">' +
-                                        '<div style="background-color:#ffffff; position:relative; width:50px; height:50px; border-radius:100px; display:flex; align-items:center; justify-content:center; cursor:pointer; top:50%; left:50%; transform:translate(-50%, -50%)">' +
+                                        '<div onclick="deletecomic($(this));" style="background-color:#ffffff; position:relative; width:50px; height:50px; border-radius:100px; display:flex; align-items:center; justify-content:center; cursor:pointer; top:50%; left:50%; transform:translate(-50%, -50%)" data-comicid="' + id + '">' +
                                         '<span class="fa fa-trash-o" style="position:relative; font-size:x-large">' + '</span>' +
                                         '</div>' +
                                         '</div>' +
